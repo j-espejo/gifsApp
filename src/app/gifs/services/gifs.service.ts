@@ -43,13 +43,10 @@ export class GifsService {
       .set('limit', '10')
       .set('q', query);
 
-    console.log(params.toString());
-
     //Observable
     this.http
       .get<ISearchGifsResponse>(`${this.serviceURL}/search`, { params })
       .subscribe((resp) => {
-        console.log(resp.data);
         this.results = resp.data;
         localStorage.setItem('results', JSON.stringify(this.results));
       });
